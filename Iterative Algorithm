@@ -1,0 +1,65 @@
+Iterative algorithm for MAT MUL This simple technique has complexity O(n^3) i-e three for loops are traversing through the list for mutliplications
+purpose. 
+NOTE: This code is written in python 
+
+
+import random
+class matrix_mul:
+ # Matrix Multiplication through Iterative Method
+ def matultilication(self,mat1row,mat1col,mat2row,mat2col,Mat1,Mat2):
+  Mat3=[]
+  print("Randomaly intialized Matrix 1")
+  for i in range (mat1row):
+     print(Mat1[i])
+  print("Randomaly intialized Matrix 2")
+  for i in range(mat2row):
+     print(Mat2[i])
+  if (mat1col==mat2row):
+     Mat3row=mat1col
+     Mat3col=mat2row
+     for i in range(Mat3row):
+         list1=[]
+         for k in range(Mat3col):
+             list1.append(0)
+         Mat3.append(list1)
+     for i in range(len(Mat1)):
+         # iterate through columns of Y
+         for j in range(len(Mat2[0])):
+             for k in range(len(Mat2)):
+                 Mat3[i][j] += Mat1[i][k] * Mat2[k][j]
+     print("Matrix 3 Result")
+     #Result is submitted in
+     for p in range (Mat3row):
+        print(Mat3[p])
+  else:
+     print("Sorry multiplication not possible ")
+
+
+ def information(self):
+  Mat1=[]
+  Mat2=[]
+  print("Enter the row size of matrix 1")
+  mat1row=int(input())
+  mat1col=int(input("Col Size\n"))
+  print("Enter the row size of matrix 2")
+  mat2row=int(input())
+  mat2col=int(input("Col Size\n"))
+  # Here i am only taking co ordinates from user of matrix 1 and matrix 2
+  # Population of matrix is done through random numbers
+  for i in range (mat1row):
+    list1=[]
+    for l in range(mat1col):
+        inp=random.randint(0,15)
+        list1.append(inp)
+    Mat1.append(list1)
+  # Second matrix is being populated
+  for i in range (mat2row):
+    list1=[]
+    for l in range(mat2col):
+        inp=random.randint(0,15)
+        list1.append(inp)
+    Mat2.append(list1)
+  self.matultilication(mat1row, mat1col, mat2row, mat2col, Mat1, Mat2)
+#Since i am new to Python OOP conecpts so i am just making A simple class which performs whole functionality
+M=matrix_mul()
+M.information()

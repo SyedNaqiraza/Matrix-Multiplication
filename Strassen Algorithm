@@ -1,0 +1,57 @@
+This is the implementation of Strassen Algorithm Initially this implementation is for only 2*2 Matrix, moreover this matrix multiplication algo
+takes O(n^log7) time it reduces one step as compared to simple iterative algorithm,below is the implementation of that algo 
+NOTE: This implementation is done in python 
+
+
+
+import random
+class matrix_mul:
+ def matultilication(self,Mat1,Mat2):
+  Mat3=[[1,2],[3,4]]
+  print("Randomaly intialized Matrix 1")
+  row=2
+  for i in range (row):
+     print(Mat1[i])
+  print("Randomaly intialized Matrix 2")
+  for i in range(row):
+     print(Mat2[i])
+  M1=(Mat1[0][0]+Mat1[1][1])*(Mat2[0][0]+Mat2[1][1])
+  M2 = (Mat1[1][0] + Mat1[1][1]) * (Mat2[0][0] )
+  M3 = (Mat1[0][0]) * (Mat2[0][1]-Mat2[1][1])
+  M4 = (Mat1[1][1]) * (Mat2[1][0] - Mat2[0][0])
+  M5 = (Mat1[0][0]) * (Mat2[0][1] - Mat2[1][1])
+  M6 = (Mat1[1][0]-Mat1[0][0]) * (Mat2[0][0]+Mat2[0][1])
+  M7 = (Mat1[0][1]-Mat1[1][1]) * (Mat2[1][0] + Mat2[1][1])
+  Mat3[0][0]=M1+M4-M5+M7
+  Mat3[0][1] = M3+M5
+  Mat3[1][0] =M2+M4
+  Mat3[1][1] = M1 + M2 +M3 + M6
+  print ("Product of Mat")
+  print(Mat3[0][0],Mat3[0][1])
+  print(Mat3[1][0],Mat3[1][1])
+
+
+
+ def information(self):
+  Mat1=[]
+  Mat2=[]
+  Row=2
+  col=2
+  #Rows and Cols are hardcoded to be 2*2
+  for i in range (Row):
+    list1=[]
+    for l in range(col):
+        inp=random.randint(0,15)
+        list1.append(inp)
+    Mat1.append(list1)
+  # Second matrix is being populated
+  for i in range (Row):
+    list1=[]
+    for l in range(col):
+        inp=random.randint(0,15)
+        list1.append(inp)
+    Mat2.append(list1)
+  self.matultilication( Mat1, Mat2)
+#Since i am new to Python OOP conecpts so i am just making A simple class which performs whole functionality
+M=matrix_mul()
+M.information()
